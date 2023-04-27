@@ -1,0 +1,51 @@
+{
+  "name": "@am92/pkg-bp-ts",
+  "version": "1.0.0",
+  "description": "NPM Package Boilerplate in TS",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./subModuleA": {
+      "types": "./dist/types/subModules/subModuleA.d.ts",
+      "require": "./dist/cjs/subModules/subModuleA.js",
+      "import": "./dist/esm/subModules/subModuleA.js",
+      "default": "./dist/esm/subModules/subModuleA.js"
+    }
+  },
+  "scripts": {
+    "compile": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json",
+    "build:clean": "rm -rf ./dist",
+    "build": "npm-run-all build:clean compile",
+    "test": "echo 'Error: no test specified'",
+    "preversion": "npm-run-all test",
+    "version": "echo 'Versioning'",
+    "postversion": "git push && git push --tags && npm run publish:pkg",
+    "publish:pkg": "npm publish"
+  },
+  "repository": "git@github.com:heliumtank92/am92-pkg-bp-ts.git",
+  "homepage": "https://github.com/heliumtank92/am92-pkg-bp-ts#readme",
+  "contributors": [
+    {
+      "name": "Ankit Gandhi",
+      "email": "ankitgandhi452@gmail.com",
+      "url": "https://github.com/ankitgandhi452"
+    },
+    {
+      "name": "Mehul Agarwal",
+      "email": "agarwalmehul92@gmail.com",
+      "url": "https://github.com/agarwalmehul"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
